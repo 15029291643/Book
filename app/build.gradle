@@ -44,7 +44,8 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation(libs.okhttp)
     // jsoup HTML parser library @ https://jsoup.org/
-    implementation 'org.jsoup:jsoup:1.16.1'
+    implementation libs.jsoup
+    implementation libs.google.gson
 }
