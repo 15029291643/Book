@@ -1,7 +1,10 @@
 package com.example.book.request
 
+import okhttp3.FormBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 
 object FanqieRequest {
     private val client = OkHttpClient()
@@ -12,13 +15,32 @@ object FanqieRequest {
         return response.body?.string() ?: ""
     }
 
-    fun search(name: String): List<Book> {
-        val url = "https://fanqienovel.com/search/$name"
-        println(url)
-        return FanqieFormat.search(request(url))
-    }
-}
 
-fun main() {
-    FanqieRequest.search("斗罗大陆")
+
+    fun post(url: String, map: Map<String, String>): String {
+        val body = FormBody.Builder().apply {
+            map.forEach { (k, v) ->
+                add(k, v)
+            }
+        }.build()
+        val request = Request.Builder()
+            .url(url)
+            .post(body)
+            .build()
+        val response = client.newCall(request).execute()
+        return response.body?.string() ?: ""
+    }
+
+    fun post(url: String, json: String): String {
+        val body = RequestBody.create(
+            "application/json".toMediaTypeOrNull(), json
+        )
+        val request = Request.Builder()
+            .url(url)
+            .post(body)
+            .build()
+        val response = client.newCall(request).execute()
+        return response.body?.string() ?: ""
+    }
+
 }
