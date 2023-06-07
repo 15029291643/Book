@@ -30,6 +30,7 @@ class ResultAdapter(
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.name.text = list[position].bookName
         holder.itemView.setOnClickListener {
             acitvity.startActivity(Intent(acitvity, InfoActivity::class.java))
         }

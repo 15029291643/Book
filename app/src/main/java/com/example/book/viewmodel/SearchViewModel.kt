@@ -12,6 +12,7 @@ class SearchViewModel : ViewModel() {
 
     fun search(keyword: String) {
         ThreadPool.submit {
+            "进入新城".loge()
             books.postValue(
                 OkHttpRequest.search(keyword)
             ).also {

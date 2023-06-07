@@ -43,7 +43,7 @@ object OkHttpRequest {
     }
 
     /*
-    http://search.zongheng.com/search/book?
+    https://search.zongheng.com/search/book?
     keyword=斗罗大陆
     &sort=null
     &pageNo=1
@@ -56,7 +56,7 @@ object OkHttpRequest {
         pageNo: Int = 1,
         pageNum: Int = 20
     ): List<RecDataList> {
-        val url = "http://search.zongheng.com/search/book?" +
+        val url = "https://search.zongheng.com/search/book?" +
                 "keyword=$keyword" +
                 "&sort=$sort" +
                 "&pageNo=$pageNo" +
@@ -78,5 +78,5 @@ object OkHttpRequest {
 }
 
 fun main() {
-    OkHttpRequest.search("斗罗")
+    println(OkHttpRequest.search("斗罗"))
 }
