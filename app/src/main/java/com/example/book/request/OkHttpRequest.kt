@@ -51,18 +51,17 @@ object OkHttpRequest {
     &isFromHuayu=0
     * */
     fun search(
-        url: String,
         keyword: String,
         sort: String = "null",
         pageNo: Int = 1,
         pageNum: Int = 20
     ): List<RecDataList> {
-        val url1 = url +
-                "?keyword=$keyword" +
+        val url = "http://search.zongheng.com/search/book?" +
+                "keyword=$keyword" +
                 "&sort=$sort" +
                 "&pageNo=$pageNo" +
                 "&pageNum=$pageNum"
-        return ZhonghengParse.search(get(url1))
+        return ZhonghengParse.search(get(url))
     }
 
     // https://book.zongheng.com/chapter/1245784/70122630.html
@@ -76,4 +75,8 @@ object OkHttpRequest {
 
     * */
     fun catalogs(url: String, json: String) = post(url, json)
+}
+
+fun main() {
+    OkHttpRequest.search("斗罗")
 }

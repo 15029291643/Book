@@ -27,10 +27,10 @@
             android:name=".activity.SousuoActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.JieguoActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.JieguoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

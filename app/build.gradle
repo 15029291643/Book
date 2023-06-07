@@ -48,4 +48,6 @@ dependencies {
     // jsoup HTML parser library @ https://jsoup.org/
     implementation libs.jsoup
     implementation libs.google.gson
+
+    implementation libs.livedata
 }
