@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book.activity.ReadActivity
 import com.example.book.databinding.AdapterCatalogBinding
-import com.example.book.model.catalog.Chapter
+import com.example.book.model.catalog.ChapterViewList
 
-class CatalogAdapter(val activity: Activity, val bookId: String) :
+class CatalogAdapter(val activity: Activity) :
     RecyclerView.Adapter<CatalogAdapter.ViewHolder>() {
-    val list = mutableListOf<Chapter>()
+    val list = mutableListOf<ChapterViewList>()
+    lateinit var bookId: String
 
     class ViewHolder(binding: AdapterCatalogBinding) : RecyclerView.ViewHolder(binding.root) {
         val name = binding.textView2
@@ -30,7 +31,7 @@ class CatalogAdapter(val activity: Activity, val bookId: String) :
         // 打开章节阅读
         holder.itemView.setOnClickListener {
             ReadActivity.putExtra(
-                bookId,
+                list[position].bookId.toString(),
                 list[position].chapterId.toString()
             )
             activity.startActivity(Intent(activity, ReadActivity::class.java))

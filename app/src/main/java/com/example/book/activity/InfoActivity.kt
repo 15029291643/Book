@@ -36,7 +36,7 @@ class InfoActivity : AppCompatActivity() {
         binding.read.setOnClickListener {
             viewModel.chapters.value?.let { chapters ->
                 ReadActivity.putExtra(
-                    book.tomeId.toString(),
+                    chapters[0].bookId.toString(),
                     chapters[0].chapterId.toString()
                 )
                 startActivity(Intent(this, ReadActivity::class.java))
@@ -45,9 +45,10 @@ class InfoActivity : AppCompatActivity() {
 
         // 目录
         binding.catalogs.layoutManager = LinearLayoutManager(this)
-        val adapter = CatalogAdapter(this, book.tomeId.toString())
+        val adapter = CatalogAdapter(this)
         binding.catalogs.adapter = adapter
 
+        // 初始化一次
         viewModel.chapters.observe(this) {
             adapter.list.clear()
             adapter.list.addAll(it)

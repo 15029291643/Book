@@ -1,7 +1,8 @@
 /**
  * Copyright 2023 json.cn
  */
-package com.example.book.model.catalog
+package com.example.book.model.catalog2
+
 
 /**
  * Auto-generated: 2023-06-07 21:17:42

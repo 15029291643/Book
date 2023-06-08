@@ -8,5 +8,7 @@ fun String.toDataClassString() = "data ${trim()}"
     .replace("= 0", ":Int = 0")
     .replace("= false", ":Boolean = false")
     .replace("= \"\"", ":String = \"\"")
+    .replace("Long :Int", "Long")
+    .replace("(,", "(")
 
 fun String.printDataClassString() = println(toDataClassString())
