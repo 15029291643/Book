@@ -63,7 +63,9 @@ object OkHttpRequest {
                 "&pageNo=$pageNo" +
                 "&pageNum=$pageNum"
         "链接: $url".logeOrPrintln()
-        return ZhonghengParse.search(get(url))
+        return ZhonghengParse.search(get(url).also {
+            "json返回: $it".logeOrPrintln()
+        })
     }
 
     // https://book.zongheng.com/chapter/1245784/70122630.html
@@ -76,7 +78,17 @@ object OkHttpRequest {
     {"bookId":1245784}
 
     * */
-    fun catalogs(url: String, json: String) = post(url, json)
+    // 通过书的id获取整个目录
+    fun catalogs(bookId: String) = ZhonghengParse.catalogs(
+        post(
+            "https://naodongapi.zongheng.com/planet/book/catalogs",
+            "{\"bookId\":$bookId}"
+        ).also {
+            "目录请求: $it".logeOrPrintln()
+        }.also {
+            "目录返回：$it".logeOrPrintln()
+        }
+    )
 
     // 第一章链接
     fun read(tomeId: String) = "http://book.zongheng.com/book/$tomeId".let {
@@ -85,5 +97,5 @@ object OkHttpRequest {
 }
 
 fun main() {
-    OkHttpRequest.search("斗罗")
+    println(OkHttpRequest.catalogs("1245784"))
 }
