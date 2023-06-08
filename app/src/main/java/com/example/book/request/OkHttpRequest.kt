@@ -73,26 +73,27 @@ object OkHttpRequest {
             "内容: $it".logeOrPrintln()
         }))
 
-    /*
-    // 章节名
-    https://naodongapi.zongheng.com/planet/book/catalogs
-    // 请求体
-    {"bookId":1245784}
+    fun catalogs(bookId: String) = ZhonghengParse.catalogs(get("https://book.zongheng.com/showchapterList/$bookId").also {
+        "目录获取：$it".logeOrPrintln()
+    }).also {
+        "目录：$it".logeOrPrintln()
+    }
 
-    * */
-    // 通过书的id获取整个目录
+
+    /*
+    // 获取目录，不知纵横为何废弃
     fun catalogs(bookId: String) = ZhonghengParse.catalogs(
         post(
             "https://naodongapi.zongheng.com/planet/book/catalogs",
             "{\"bookId\":$bookId}"
+
         ).also {
+            "目录: url: https://naodongapi.zongheng.com/planet/book/catalogs".logeOrPrintln()
+            "目录: json: {\"bookId\":$bookId}".logeOrPrintln()
             "目录: $it".logeOrPrintln()
         }
     )
-
+*/
 
 }
 
-fun main() {
-    println(OkHttpRequest.catalogs("1245784"))
-}

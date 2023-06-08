@@ -2,6 +2,7 @@ package com.example.book.request
 
 import com.example.book.model.catalog.CatalogResponse
 import com.example.book.model.chapter.ChapterResponse
+import com.example.book.util.logeOrPrintln
 import com.google.gson.Gson
 import org.jsoup.Jsoup
 
@@ -16,8 +17,11 @@ object ZhonghengParse {
         }
     }
 
+    // 解析目录
     fun catalogs(json: String) =
-        gson.fromJson(json, CatalogResponse::class.java).result?.tomes?.get(0)?.chapter
+        gson.fromJson(json, CatalogResponse::class.java).also {
+            "解析成功: $it".logeOrPrintln()
+        }.result?.tomes?.get(0)?.chapter
             ?: emptyList()
 
     fun read(html: String) = Jsoup.parse(html)
