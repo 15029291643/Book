@@ -9,10 +9,10 @@ package com.example.book.model.catalog
  * @author json.cn (i@json.cn)
  * @website http://www.json.cn/java2pojo/
  */
-class ShowTomeViewList {
-    var tome: Tome? = null
-    var startChapterId: Long = 0
-    var chapterViewList: List<ChapterViewList>? = null
-    var tomeTotalWords: Long = 0
-    var tomeTotalChapterNum = 0
-}
+data class ShowTomeViewList (
+    var tome: Tome? = null,
+    var startChapterId: Long = 0,
+    var chapterViewList: List<ChapterViewList>? = null,
+    var tomeTotalWords: Long = 0,
+    var tomeTotalChapterNum :Int = 0,
+)

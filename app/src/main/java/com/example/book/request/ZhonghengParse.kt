@@ -1,6 +1,7 @@
 package com.example.book.request
 
 import com.example.book.model.catalog.CatalogResponse
+import com.example.book.model.catalog2.CatalogResponse2
 import com.example.book.model.chapter.ChapterResponse
 import com.example.book.util.logeOrPrintln
 import com.google.gson.Gson
@@ -18,13 +19,23 @@ object ZhonghengParse {
     }
 
     // 解析目录
-    fun catalogs(json: String) =
-        gson.fromJson(json, CatalogResponse::class.java).also {
-            "解析成功: $it".logeOrPrintln()
-        }.data?.showTomeViewList?.get(0)?.chapterViewList ?: emptyList()
+    fun catalogs(json: String) = try {
+        gson.fromJson(
+            json,
+            CatalogResponse::class.java
+        ).data?.showTomeViewList?.get(0)?.chapterViewList.also {
+            "解析成功: ${it?.size}".logeOrPrintln()
+        } ?: emptyList()
+    } catch (_: Exception) {
+        emptyList()
+    }
 
-    fun read(html: String) = Jsoup.parse(html)
-        .select("body > div.wrap > div.book-html-box.clearfix > div.book-top.clearfix > div.book-main.fl > div.book-detail.clearfix > div.book-info > div.btn-group > a")
-        .attr("href")
-
+    // 解析目录2
+    fun catalogs2(json: String) = try {
+        gson.fromJson(json, CatalogResponse2::class.java).result?.tomes?.get(0)?.chapter.also {
+            "解析成功: ${it?.size}".logeOrPrintln()
+        } ?: emptyList()
+    } catch (_: Exception) {
+        emptyList()
+    }
 }

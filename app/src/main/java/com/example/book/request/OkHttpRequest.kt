@@ -73,15 +73,14 @@ object OkHttpRequest {
             "内容: $it".logeOrPrintln()
         }))
 
-    // 目录
-    fun catalogs(bookId: String) = ZhonghengParse.catalogs(get("https://book.zongheng.com/showchapterList/$bookId".also {
-        "目录: $it".logeOrPrintln()
-    }))
+    // 目录，暂放
+    fun catalogs(bookId: String) =
+        ZhonghengParse.catalogs(get("https://book.zongheng.com/showchapterList/$bookId".also {
+            "目录: $it".logeOrPrintln()
+        }))
 
-
-    /*
-    // 获取目录，不知纵横为何废弃
-    fun catalogs(bookId: String) = ZhonghengParse.catalogs(
+    // 目录2，可用
+    fun catalogs2(bookId: String) = ZhonghengParse.catalogs2(
         post(
             "https://naodongapi.zongheng.com/planet/book/catalogs",
             "{\"bookId\":$bookId}"
@@ -89,10 +88,11 @@ object OkHttpRequest {
         ).also {
             "目录: url: https://naodongapi.zongheng.com/planet/book/catalogs".logeOrPrintln()
             "目录: json: {\"bookId\":$bookId}".logeOrPrintln()
-            "目录: $it".logeOrPrintln()
         }
     )
-*/
-
 }
 
+fun main() {
+    OkHttpRequest.catalogs("1217041")
+    OkHttpRequest.catalogs2("1217041")
+}

@@ -9,8 +9,8 @@ package com.example.book.model.catalog
  * @author json.cn (i@json.cn)
  * @website http://www.json.cn/java2pojo/
  */
-class CatalogResponse {
-    var status = 0
-    var msg: String? = null
-    var data: Data? = null
-}
+data class CatalogResponse (
+    var status :Int = 0,
+    var msg: String? = null,
+    var data: Data? = null,
+)
