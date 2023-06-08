@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.book.activity.InfoActivity
 import com.example.book.databinding.AdapterResultBinding
-import com.example.book.model.chapter.RecDataList
+import com.example.book.model.chapter.List1
+import org.jsoup.Jsoup
 
 class ResultAdapter(
     private val acitvity: Activity
 ) : RecyclerView.Adapter<ResultAdapter.ViewHolder>() {
 
-    val list = mutableListOf<RecDataList>()
+    val list = mutableListOf<List1>()
+
     class ViewHolder(val binding: AdapterResultBinding) : RecyclerView.ViewHolder(binding.root) {
         val img = binding.imageView
         val name = binding.textView
@@ -30,7 +32,9 @@ class ResultAdapter(
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = list[position].bookName
+        holder.name.text = list[position].name?.let {
+            Jsoup.parse(it).text()
+        }
         holder.itemView.setOnClickListener {
             acitvity.startActivity(Intent(acitvity, InfoActivity::class.java))
         }

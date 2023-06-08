@@ -1,6 +1,7 @@
 package com.example.book.request
 
-import com.example.book.model.chapter.RecDataList
+import com.example.book.model.chapter.List1
+import com.example.book.util.logeOrPrintln
 import okhttp3.FormBody
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
@@ -55,12 +56,13 @@ object OkHttpRequest {
         sort: String = "null",
         pageNo: Int = 1,
         pageNum: Int = 20
-    ): List<RecDataList> {
+    ): List<List1> {
         val url = "https://search.zongheng.com/search/book?" +
                 "keyword=$keyword" +
                 "&sort=$sort" +
                 "&pageNo=$pageNo" +
                 "&pageNum=$pageNum"
+        "链接: $url".logeOrPrintln()
         return ZhonghengParse.search(get(url))
     }
 
@@ -78,5 +80,5 @@ object OkHttpRequest {
 }
 
 fun main() {
-    println(OkHttpRequest.search("斗罗"))
+    OkHttpRequest.search("斗罗")
 }
