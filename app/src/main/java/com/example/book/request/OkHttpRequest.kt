@@ -62,14 +62,16 @@ object OkHttpRequest {
                 "&sort=$sort" +
                 "&pageNo=$pageNo" +
                 "&pageNum=$pageNum"
-        "链接: $url".logeOrPrintln()
-        return ZhonghengParse.search(get(url).also {
-            "json返回: $it".logeOrPrintln()
-        })
+        "搜索: $url".logeOrPrintln()
+        return ZhonghengParse.search(get(url))
     }
 
+    // 章节内容
     // https://book.zongheng.com/chapter/1245784/70122630.html
-    fun chapter(url: String) = ZhonghengParse.chapter(get(url))
+    fun content(bookId: String, chapterId: String) =
+        ZhonghengParse.content(get("https://book.zongheng.com/chapter/$bookId/$chapterId.html".also {
+            "内容: $it".logeOrPrintln()
+        }))
 
     /*
     // 章节名
@@ -84,16 +86,11 @@ object OkHttpRequest {
             "https://naodongapi.zongheng.com/planet/book/catalogs",
             "{\"bookId\":$bookId}"
         ).also {
-            "目录请求: $it".logeOrPrintln()
-        }.also {
-            "目录返回：$it".logeOrPrintln()
+            "目录: $it".logeOrPrintln()
         }
     )
 
-    // 第一章链接
-    fun read(tomeId: String) = "http://book.zongheng.com/book/$tomeId".let {
-        ZhonghengParse.read(get(it))
-    }
+
 }
 
 fun main() {

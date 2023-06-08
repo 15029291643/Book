@@ -6,11 +6,11 @@ import com.example.book.request.OkHttpRequest
 import com.example.book.thread.ThreadPool
 
 class ReadViewModel: ViewModel() {
-    val content = MutableLiveData<String>()
+    val content = MutableLiveData<List<String>>()
 
-    fun read(tomeId: String) {
+    fun content(bookId: String, chapterId: String) {
         ThreadPool.submit{
-            OkHttpRequest.read(tomeId).also {
+            OkHttpRequest.content(bookId, chapterId).also {
                 content.postValue(it)
             }
         }
