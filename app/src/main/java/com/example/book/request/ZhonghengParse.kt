@@ -21,8 +21,7 @@ object ZhonghengParse {
     fun catalogs(json: String) =
         gson.fromJson(json, CatalogResponse::class.java).also {
             "解析成功: $it".logeOrPrintln()
-        }.result?.tomes?.get(0)?.chapter
-            ?: emptyList()
+        }.data?.showTomeViewList?.get(0)?.chapterViewList ?: emptyList()
 
     fun read(html: String) = Jsoup.parse(html)
         .select("body > div.wrap > div.book-html-box.clearfix > div.book-top.clearfix > div.book-main.fl > div.book-detail.clearfix > div.book-info > div.btn-group > a")

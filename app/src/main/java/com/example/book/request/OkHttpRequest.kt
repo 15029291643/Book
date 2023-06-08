@@ -73,11 +73,10 @@ object OkHttpRequest {
             "内容: $it".logeOrPrintln()
         }))
 
-    fun catalogs(bookId: String) = ZhonghengParse.catalogs(get("https://book.zongheng.com/showchapterList/$bookId").also {
-        "目录获取：$it".logeOrPrintln()
-    }).also {
-        "目录：$it".logeOrPrintln()
-    }
+    // 目录
+    fun catalogs(bookId: String) = ZhonghengParse.catalogs(get("https://book.zongheng.com/showchapterList/$bookId".also {
+        "目录: $it".logeOrPrintln()
+    }))
 
 
     /*
