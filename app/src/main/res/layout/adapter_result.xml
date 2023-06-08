@@ -7,11 +7,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/authorName"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.5"
         app:srcCompat="@drawable/book" />
 
     <TextView
@@ -21,9 +25,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:lines="1"
         android:text="武魂：我开局震惊了圣魂村"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -31,14 +36,16 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:text="已完结 衍生同人 系统 穿越"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="一代神王唐三，带着一点神识在宇宙中遨游，寻找妻子转世重生的世界。在神识的牵引下，他来到了一个叫做妖精大陆的地方，而他却发现，这是一个人类为刍狗的世界……"
+        app:layout_constraintBottom_toTopOf="@+id/authorName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -46,19 +53,34 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/authorName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
-        android:maxLines="2"
-        android:text="古武少年穿越异世大陆，神级武魂、逆天功法、极品魂环源源不断。震惊就能让魂力翻倍增长，那什么魂斗罗还是封号斗罗，统统不够看。我尘羽岂不是随便展露一点实力，就能震惊魂师界所有天才……"
+        android:lines="1"
+        android:text="唐家三少"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/keyword"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/keyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:lines="1"
+        android:text="完结 玄幻 180.8万字"
+        app:layout_constraintBottom_toBottomOf="@+id/authorName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/authorName"
+        app:layout_constraintTop_toTopOf="@+id/authorName"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

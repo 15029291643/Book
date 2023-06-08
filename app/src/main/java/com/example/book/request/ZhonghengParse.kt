@@ -14,4 +14,8 @@ object ZhonghengParse {
             this += it.text().trim()
         }
     }
+
+    fun read(html: String) = Jsoup.parse(html)
+        .select("body > div.wrap > div.book-html-box.clearfix > div.book-top.clearfix > div.book-main.fl > div.book-detail.clearfix > div.book-info > div.btn-group > a")
+        .attr("href")
 }

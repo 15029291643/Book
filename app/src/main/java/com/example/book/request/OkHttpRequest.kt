@@ -77,6 +77,11 @@ object OkHttpRequest {
 
     * */
     fun catalogs(url: String, json: String) = post(url, json)
+
+    // 第一章链接
+    fun read(tomeId: String) = "http://book.zongheng.com/book/$tomeId".let {
+        ZhonghengParse.read(get(it))
+    }
 }
 
 fun main() {

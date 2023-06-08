@@ -1,5 +1,6 @@
 [versions]
 agp = "8.2.0-alpha04"
+glide = "4.15.1"
 google-gson = "2.10.1"
 jsoup = "1.16.1"
 kotlin = "1.8.0"
@@ -15,6 +16,7 @@ okhttp = "4.11.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "google-gson" }
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

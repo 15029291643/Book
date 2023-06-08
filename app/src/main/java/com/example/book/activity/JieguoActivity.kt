@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.book.adapter.ResultAdapter
 import com.example.book.databinding.ActivityJieguoBinding
-import com.example.book.request.OkHttpRequest
-import com.example.book.util.logeOrPrintln
 import com.example.book.viewmodel.SearchViewModel
 
 class JieguoActivity : AppCompatActivity() {
@@ -32,11 +30,6 @@ class JieguoActivity : AppCompatActivity() {
 
             )
         }
-        Thread {
-            OkHttpRequest.search("斗罗").also {
-                "返回数据".logeOrPrintln()
-                viewModel.books.postValue(it)
-            }
-        }.start()
+        viewModel.search("斗罗")
     }
 }

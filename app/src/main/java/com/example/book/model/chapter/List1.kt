@@ -1,5 +1,6 @@
 package com.example.book.model.chapter
 
+import java.io.Serializable
 import java.util.Date
 
 /**
@@ -34,4 +35,4 @@ data class List1(
     var cpName: String? = null,
     var consumeType: Int = 0,
     var totalWord: Long = 0,
-)
+) : Serializable
